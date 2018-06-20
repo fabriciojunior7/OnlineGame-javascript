@@ -17,7 +17,7 @@ function setup(){
 }
 
 function draw(){
-    if(eu.id == ""){eu.id = socket.id;}
+    if(eu.id == "" || eu.id == undefined){eu.id = socket.id;}
 }
 
 function mousePressed(){

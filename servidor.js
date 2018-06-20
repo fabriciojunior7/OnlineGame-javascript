@@ -15,7 +15,7 @@ console.log("==========\n\n\n");
 io.sockets.on("connection", novaConexao);
 
 //ATUALIZAR SERVIDOR
-setInterval(atualizarServidor, 35);
+setInterval(atualizarServidor, 30);
 function atualizarServidor(){
     io.sockets.emit("atualizarServidor", players);
 }

@@ -38,36 +38,36 @@ function Player(x, y){
 
     this.botaoPressionado = function(key){
         //EIXO Y
-        if(key == 38){
+        if(key == 38 || key == 87){
             this.wasd[0] = true;
         }
-        else if(key == 40){
+        else if(key == 40 || key == 83){
             this.wasd[2] = true;
         }
 
         //EIXO X
-        if(key == 37){
+        if(key == 37 || key == 65){
             this.wasd[1] = true;
         }
-        else if(key == 39){
+        else if(key == 39 || key == 68){
             this.wasd[3] = true;
         }
     }
 
     this.botaoSolto = function(key){
         //EIXO Y
-        if(key == 38){
+        if(key == 38 || key == 87){
             this.wasd[0] = false;
         }
-        else if(key == 40){
+        else if(key == 40 || key == 83){
             this.wasd[2] = false;
         }
 
         //EIXO X
-        if(key == 37){
+        if(key == 37 || key == 65){
             this.wasd[1] = false;
         }
-        else if(key == 39){
+        else if(key == 39 || key == 68){
             this.wasd[3] = false;
         }
     }
