@@ -9,7 +9,7 @@ function setup(){
     //socket.on("listaJogadores", listaJogadores);
     socket.on("atualizarServidor", atualizarServidor);
     //Outros
-    tela = createCanvas(640, 480);
+    tela = createCanvas(windowWidth, windowHeight);
     frameRate(30);
     eu = new Player(round(random(5, 635)), round(random(5, 475)));
     //Enviador
@@ -17,13 +17,27 @@ function setup(){
 }
 
 function draw(){
-
+    if(eu.id == ""){eu.id = socket.id;}
 }
 
 function mousePressed(){
     eu.x = mouseX;
     eu.y = mouseY;
     socket.emit("atualizarPosicao", eu);
+}
+
+function mouseDragged(){
+    eu.x = mouseX;
+    eu.y = mouseY;
+    socket.emit("atualizarPosicao", eu);
+}
+
+function keyPressed(){
+    eu.botaoPressionado(keyCode);
+}
+
+function keyReleased(){
+    eu.botaoSolto(keyCode);
 }
 
 //CONEXOES
@@ -38,10 +52,12 @@ function listaJogadores(lista){
 function atualizarServidor(dados){
     background(0);
     for(var i=0; i< dados.length; i++){
-        noStroke();
-        fill(255, 0, 0);
-        ellipse(dados[i].x, dados[i].y, 10, 10);
-        text(""+dados[i].id, dados[i].x-60, dados[i].y-10);
+        if(dados[i].id != eu.id){
+            noStroke();
+            fill(255, 0, 0);
+            ellipse(dados[i].x, dados[i].y, 10, 10);
+            text(""+dados[i].id, dados[i].x-60, dados[i].y-10);
+        }
     }
     eu.desenhar();
 }
